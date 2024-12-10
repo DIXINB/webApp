@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<!--   <script src="https://yastatic.net/s3/passport-sdk/autofill/v1/sdk-suggest-with-polyfills-latest.js">
+   </script>  -->
+ 
+  </head>
+  
+<body>
+<!--  <button id="buttonContainerId"></button>   --->            
+  <div> </div> 
+  <script>  
+//  window.onload=function() {
+  window.onload=function() {
+  fetch('https://oauth.yandex.ru/verification_code#access_token=y0_AgAAAAB43rPeAAx6rwAAAAERwOZsAAC5RbxF6dpGyaIFCpnibgi1KYViqQ', {mode: "no-cors"})
+   .then((response) =>response.text())
+   .then(text => {
+     const parser = new DOMParser();
+     const htmlDocument = parser.parseFromString(text, "text/html");
+     const t = htmlDocument.documentElement.querySelector("body > div.layout-content > div.block.verification-token > div > div");
+
+//document.querySelector("body > div.layout-content > div.block.verification-token > div > div")
+
+//     const t = htmlDocument.documentElement.querySelector("div.layout-content > div.block.verification-token > div > div");
+ 
+  const tt = t.textContent;
+     console.log(tt);
+   })
+    .catch(function(error) {
+          console.log('Smthing went wrong:', error);
+          })
+//  }
+
+}
+  </script>
+  </body>
+</html>
